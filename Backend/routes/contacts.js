@@ -20,6 +20,42 @@ router.get('/:id', getContact, (req,res) => {
     
 });
 
+
+//Search contact using full_name
+router.get('/search/name/:key', async(req,res) => {
+    let contact = await Contact.find({
+        "$or":[
+            {full_name: {$regex:req.params.key}}
+        ]
+    })
+    
+    res.send(contact);
+    
+});
+
+
+//Search contact using phonenumber
+router.get('/search/phoneNumber/:key', async(req,res) => {
+    let contact = await Contact.find({
+        "$or":[
+            {phone_number: {$regex:req.params.key}}
+        ]
+    })
+    
+    res.send(contact);
+    
+});
+//Search contact using email
+router.get('/search/email/:key', async(req,res) => {
+    let contact = await Contact.find({
+        "$or":[
+            {email: {$regex:req.params.key}}
+        ]
+    })
+    
+    res.send(contact);
+    
+});
 //Creating one 
 router.post('/', async(req,res) => {
     const contact = new Contact({
