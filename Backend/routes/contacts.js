@@ -13,6 +13,13 @@ router.get('/', async(req,res) => {
 });
 
 
+
+//Getting one contact 
+router.get('/:id', getContact, (req,res) => {
+    res.json(res.contact);
+    
+});
+
 //Creating one 
 router.post('/', async(req,res) => {
     const contact = new Contact({
@@ -34,4 +41,18 @@ router.post('/', async(req,res) => {
     }
 
 })
+
+async function getContact(req,res, next) {
+    let contact
+    try{
+        contact = await Contact.findById(req.params.id);
+        if(contact == null){
+            return res.status(404).json({ message: 'Cannot find contact'});
+        }
+    }catch(error){
+        res.status(500).json({message: error.message})
+    }
+    res.contact = contact
+    next()
+}
 module.exports = router
