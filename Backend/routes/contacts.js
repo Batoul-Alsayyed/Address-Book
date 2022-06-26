@@ -42,6 +42,47 @@ router.post('/', async(req,res) => {
 
 })
 
+//Deleting a contact
+router.delete('/:id', getContact, (req,res) => {
+    try{
+        res.contact.remove();
+        res.json({ message: 'Deleted Contact'});
+    }catch(error){
+        res.status(500).json({message: error.message});
+    }
+    
+});
+
+//Updating a contact
+router.patch('/:id', getContact, async (req,res) => {
+    if(req.body.full_name !=null){
+        res.contact.full_name = req.body.full_name
+    }
+    if(req.body.phone_number !=null){
+        res.contact.phone_number = req.body.phone_number
+    }
+    if(req.body.relationship_status !=null){
+        res.contact.relationship_status = req.body.relationship_status
+    }
+    if(req.body.email !=null){
+        res.contact.email = req.body.email
+    }
+    if(req.body.longitude !=null){
+        res.contact.longitude = req.body.longitude
+    }
+    if(req.body.latitude !=null){
+        res.contact.latitude = req.body.latitude
+    }
+    try{
+        const updated_contact = await res.contact.save();
+        res.json({updated_contact});
+    }catch(error){
+        res.status(400).useChunkedEncodingByDefault({message: error.message});
+    }
+    
+});
+
+
 async function getContact(req,res, next) {
     let contact
     try{
