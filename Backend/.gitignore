@@ -2,4 +2,3 @@ node_modules
 model
 routes
 .env
-validation.js
