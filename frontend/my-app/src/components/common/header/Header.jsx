@@ -18,17 +18,18 @@ function Header () {
         </section>
       </section>
       <section className="header-bottom">
-        {/* <section className="header-bottom__phone">
-          99999999999
+        <section className='header-buttom-row'>
+        <h1>The free and easy way to add contacts.</h1>
+
+        <button>Get Started</button>
         </section>
-        <section className="header-bottom__email">
-          shop.info@gmail.com
-        </section> */}
          <div className='logo'>
             <img src={logo} alt='logo'/>  
          </div>
 
+
       </section> 
+
     </section>
   )
 }

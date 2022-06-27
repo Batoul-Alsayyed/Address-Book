@@ -51,16 +51,33 @@
   display: flex;
   flex: 1;
   justify-content: flex-end;
-  align-items: center;
+  align-items: left;
   margin-top: 6px;
 }
-
-.header-bottom__email {
-  margin-right: 55px;
-}
-
-.header-bottom__phone {
-  margin-right: 65px;
+.header-bottom {
+    display: flex;
+    flex: 1;
+    justify-content: row;
+    align-items: left;
+    margin-top: 6px;
+  }
+  .header-bottom button {
+    padding: 20px;
+    background-color: rgb(24, 201, 214);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    margin-right: 100px; 
+  }  
+  .header-bottom button:hover {
+    background-color: rgb(17, 142, 151);
+  }
+.header-bottom h1{
+    margin-right: 100px;
+    font-size: 40px;
+    margin-top: 150px;
+    font-weight: 200;
 }
 
 .header-bottom__bag {
