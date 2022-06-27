@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar } from '../../common' ;
 
 import './Header.css';
-
+import logo from '../logo.svg'
 function Header () {
 
   return (
@@ -15,17 +15,20 @@ function Header () {
           <section className="header-top__navigation">
             <Navbar />
           </section>
-          <hr className="header-top__seperator" />
         </section>
       </section>
-      {/* <section className="header-bottom">
-        <section className="header-bottom__phone">
+      <section className="header-bottom">
+        {/* <section className="header-bottom__phone">
           99999999999
         </section>
         <section className="header-bottom__email">
           shop.info@gmail.com
-        </section>
-      </section> */}
+        </section> */}
+         <div className='logo'>
+            <img src={logo} alt='logo'/>  
+         </div>
+
+      </section> 
     </section>
   )
 }
