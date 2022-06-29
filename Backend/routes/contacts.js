@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Contact = require('../model/Contact');
+const User = require('../model/User');
 
 //Getting all
 router.get('/', async(req,res) => {
@@ -64,12 +65,24 @@ router.post('/', async(req,res) => {
         relationship_status: req.body.relationship_status,
         email: req.body.email,
         longitude: req.body.longitude,
-        latitude: req.body.latitude
+        latitude: req.body.latitude,
+        user: req.body.user,
+        
     });
 
 
     try{
         const newContact = await contact.save();
+        const updateUser = await User.updateOne(
+            {
+              _id: newContact.user,
+            },
+            {
+              $push: {
+                contacts: newContact._id,
+              },
+            }
+          );
         res.status(201).json(newContact);
     }catch(error){
         //error 400 indicates if the user entered wrong data

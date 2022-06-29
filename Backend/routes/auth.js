@@ -10,7 +10,6 @@ const jwt = require('jsonwebtoken');
 //     password: Joi.string().min(6).required()
 // }
 
-
 router.post('/register', async(req, res) => {
     //validating data before adding new user
     const { error } = registerValidation(req.body);
